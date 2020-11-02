@@ -3,14 +3,16 @@ class CountVectorizer:
     Конвертирует слова в вектора
 
     """
+    def __init__(self):
+        self.unique_words = set()
+
     def get_feature_names(self) -> list:
         return list(self.unique_words)
 
     def fit_transform(self, corpus: list) -> list:
-        if not isinstance(corpus, (str, list)):
+        if not isinstance(corpus, list):
             raise TypeError('Incorrect type of the input data')
 
-        self.unique_words = set()
         for string in corpus:
             list_split = string.split()
             for word in list_split:
